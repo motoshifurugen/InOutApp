@@ -19,30 +19,30 @@ th {
             <th>期間</th>
             <td>
                 <input type="date" name="date_from" value= @if(request('date_from')) {{ request('date_from') }} @endif />
-                &nbsp ~ &nbsp;
+                &nbsp ~
                 <input type="date" name="date_to" value= @if(request('date_to')) {{ request('date_to') }} @endif />
             </td>
         </tr>
         <tr align="left">
             <th>収支</th>
             <td>
-                @foreach ($in_outs as $key => $val)
-                    <input type="radio" name="in_out" value="{{ $key }}" @if ((!request('in_out') && $key == 'ALL') || (request('in_out') == $key)) checked @endif />{{ $value }}
+                @foreach ($InOuts as $key => $val)
+                    <input type="radio" name="in_out" value="{{ $key }}" @if (!request('in_out') && $key == 'ALL' || request('in_out') == $key) checked @endif />{{ $val }}
                 @endforeach
             </td>
         </tr>
         <tr align="left">
             <th>項目</th>
             <td>
-                @foreach($categories as $key => $value)
-                    <input type="checkbox" name="category" value="{{ $key }}" @if(request('category') && in_array($key, request('category'))) checked @endif /> {{ $value }}
+                @foreach($categories as $key => $val)
+                    <input type="checkbox" name="category[]" value="{{ $key }}" @if(request('category') && in_array($key, request('category'))) checked @endif /> {{ $val }}
                 @endforeach
             </td>
         </tr>
         <tr align="center">
             <td colspan="2">
                 <button type="submit">検索</button>
-                <button type="button" onclick="location.href='/events'">リセット</button>
+                <button type="button" onclick="location.href='/event'">リセット</button>
             </td>
         </tr>
     </table>
@@ -56,14 +56,14 @@ th {
         <th>収支合計</th>
     </tr>
     <tr align="right">
-        <td>{{ $pf['total_in'] }}</td>
-        <td>{{ $pf['total_out'] }}</td>
-        <td>{{ $pf['in_out_money'] }}</td>
+        <td>{{ $pf['total_in'] }}円</td>
+        <td>{{ $pf['total_out'] }}円</td>
+        <td>{{ $pf['in_out_money'] }}円</td>
     </tr>
 </table>
 
 <h4>明細</h4>
-<button type="button" onclick="location.href='/events/create'">登録</button>
+<button type="button" onclick="location.href='/event/create'">登録</button>
 <br />
 <br />
 <table border="1" cellspacing="0" cellpadding="5">
@@ -78,8 +78,8 @@ th {
     @foreach($events as $ev)
     <tr>
         <td>{{ \Carbon\Carbon::create($ev->date)->format('Y/m/d h:i') }}</td>
-        <td align="center">{{ $ev->in_out }}</td>
-        <td align="center">{{ $ev->category }}</td>
+        <td align="center">{{ $InOuts[$ev->in_out] }}</td>
+        <td align="center">{{ $categories[$ev->category] }}</td>
         <td align="right">{{ $ev->money }}円</td>
         <td>{{ $ev->memo }}</td>
         <td><button type="button" onclick="location.href='event/{{ $ev->id }}/edit'">編集</button></td>

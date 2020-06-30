@@ -29,8 +29,8 @@ th {
     <tr>
         <th>収支</th>
         <td>
-            @foreach ($in_outs as $key => $value)
-                <input type="radio" name="in_out" value="{{ $key }}" @if ($ev->in_out == $key) checked @endif />{{ $val }}
+            @foreach ($InOuts as $key => $val)
+                <input type="radio" name="in_out" value="{{ $key }}" @if ($ev->in_out == $key) checked @endif>{{ $val }}
             @endforeach
         </td>
     </tr>
@@ -39,18 +39,18 @@ th {
         <td>
             <select name="category">
                 @foreach ($categories as $key => $val)
-                    <onption value="{{ $key }}" @if ($ev->category == $key) checked @endif >{{ $val }}</onption>
+                    <option value="{{ $key }}" @if ($ev->category == $key) selected @endif >{{ $val }}</option>
                 @endforeach
             </select>
         </td>
     </tr>
     <tr>
         <th>金額</th>
-        <td><input type="number" name="money" value="{{ $ev->money }}" required></td>
+        <td><input type="number" name="money" value="{{ $ev->money }}" required>円</td>
     </tr>
     <tr>
         <th>メモ</th>
-        <td><textarea name="memo" value="{{ $th->memo }}"></textarea></td>
+        <td><textarea name="memo" value="{{ $ev->memo }}"></textarea></td>
     </tr>
     <tr align="center">
         <td colspan="2"><button type="submit">{{ $type == 'create' ? '登録' : '更新' }}</button></td>

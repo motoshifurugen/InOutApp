@@ -21,7 +21,7 @@ class EventController extends Controller
         $performance = $this->calcPerformance($events);
         $in_outs = ['ALL' => '全て'] + $this->IN_OUTS;
 
-        return view('events.index', compact('events'), ['pf' => $performance, 'categories' => $this->CATEGORIES, 'InOut' => '$in_out']);
+        return view('events.index', compact('events'), ['pf' => $performance, 'categories' => $this->CATEGORIES, 'InOuts' =>$in_outs]);
     }
 
     public function create()
@@ -29,10 +29,15 @@ class EventController extends Controller
         $ev = new Event();
         $ev->date = now();
         $ev->in_out = 'OUT';
-        $ev->categoty = 'food';
+        $ev->category = 'food';
         $ev->money = 0;
 
         return $this->createViewWithReturn($ev, 'create');
+    }
+
+    public function edit(Event $event)
+    {
+        return $this->createViewWithReturn($event, 'edit');
     }
 
     public function store()
@@ -40,11 +45,6 @@ class EventController extends Controller
         $this->save();
 
         return redirect()->to('event');
-    }
-
-    public function edit(Event $event)
-    {
-        return $this->createViewWithReturn($event, 'edit');
     }
 
     public function update(Event $event)
@@ -64,7 +64,7 @@ class EventController extends Controller
     function createViewWithReturn($ev, $type) {
         $ev->date = Carbon::parse($ev->date)->format('Y-m-d\TH:i');
 
-        return view('events.save', compact('ev'), ['categories' => $this->CATEGORIES, 'in_outs' => $this->IN_OUTS, 'type' => $type]);
+        return view('events.save', compact('ev'), ['categories' => $this->CATEGORIES, 'InOuts' => $this->IN_OUTS, 'type' => $type]);
     }
 
     function save($data = null) {
@@ -110,7 +110,7 @@ class EventController extends Controller
         ];
 
         foreach ($events as $ev) {
-            if($ev->in_out === 'OUT') {
+            if($ev->in_out == 'OUT') {
                 $ret['total_out'] += $ev->money;
             } else {
                 $ret['total_in'] += $ev->money;
