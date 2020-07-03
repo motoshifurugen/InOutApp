@@ -12,14 +12,14 @@
         <th>カテゴリ</th>
         <td>
           @foreach ($categories as $key => $val)
-            <input type="checkbox" name="category[]" value="{{ $key }}"/ @if (request('category_id') && in_array($key, request('category_id'))) checked @endif>{{ $val }}
+            <input type="checkbox" name="category_id[]" value="{{ $key }}"/ @if (request('category_id') && in_array($key, request('category_id'))) checked @endif>{{ $val }}
           @endforeach
         </td>
       </tr>
       <tr align="center">
         <td colspan="2">
           <button type="submit">検索</button>
-          <button type="button" onclick="location.href='/balance'">リセット</button>
+          <button type="button" onclick="location.href='/balances'">リセット</button>
         </td>
       </tr>
     </table>
