@@ -26,6 +26,9 @@
   </from>
 
   <br/>
+  <button type="button" onclick="location.href='/balance/create'">登録</button>
+
+  <br/>
   <table border="1" cellspacing="0" cellpadding="5">
     <tr align="center">
       <th>購入日</th>
