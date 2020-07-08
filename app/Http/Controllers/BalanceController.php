@@ -51,7 +51,7 @@ class BalanceController extends Controller
         $ba->user_id = $user_id;
         $ba->category_id = 1;
         $ba->amount = 0;
-        $ba->transcation_date = now();
+        $ba->transaction_date = now();
 
         return $this->createViewReturn($ba, 'create');
     }
@@ -114,8 +114,8 @@ class BalanceController extends Controller
         //
     }
 
-    function createViewRerutn($ba, $type) {
-        $ba->date = Carbon::parse($ba->date)->format('Y-m-d\TH:i');
+    function createViewReturn($ba, $type) {
+        $ba->transaction_date = Carbon::parse($ba->transaction_date)->format('Y-m-d\TH:i');
 
         return view('balances.save', compact('ba'), ['categories' => $this->CATEGORIES, 'type' => $type]);
     }
@@ -128,7 +128,7 @@ class BalanceController extends Controller
         $data->category_id = request('category_id');
         $data->amount = request('amount');
         $data->memo = request('memo');
-        $data->transcation_date = request('transcation_date');
+        $data->transaction_date = request('transaction_date');
         $data->save();
     }
 }

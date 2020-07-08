@@ -9,7 +9,7 @@
 <table border="1" cellspacing="0" cellpadding="5">
     <tr align="left">
         <th>日</th>
-        <td><input type="datetime-local" name="transcation_date" value="{{ $ba->transcation_date }}" required ></td>
+        <td><input type="datetime-local" name="transaction_date" value="{{ $ba->transaction_date }}" required ></td>
     </tr>
     <tr align="left">
         <th>カテゴリ</th>

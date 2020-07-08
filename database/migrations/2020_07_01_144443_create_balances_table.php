@@ -20,6 +20,7 @@ class CreateBalancesTable extends Migration
             $table->integer('amount');
             $table->text('memo')->nullable(true);
             $table->date('transaction_date');
+            $table->timestamps();
         });
     }
 
