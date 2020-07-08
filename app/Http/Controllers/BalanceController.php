@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Balance;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,14 @@ class BalanceController extends Controller
      */
     public function create()
     {
-        //
+        $user_id = Auth::id();
+        $ba = new Balance();
+        $ba->user_id = $user_id;
+        $ba->category_id = 1;
+        $ba->amount = 0;
+        $ba->transcation_date = now();
+
+        return $this->createViewReturn($ba, 'create');
     }
 
     /**
@@ -54,9 +62,11 @@ class BalanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $this->save();
+
+        return redirect()->to('balance');
     }
 
     /**
@@ -102,5 +112,23 @@ class BalanceController extends Controller
     public function destroy(Balance $balance)
     {
         //
+    }
+
+    function createViewRerutn($ba, $type) {
+        $ba->date = Carbon::parse($ba->date)->format('Y-m-d\TH:i');
+
+        return view('balances.save', compact('ba'), ['categories' => $this->CATEGORIES, 'type' => $type]);
+    }
+
+    function save($data = null) {
+        if($data === null) {
+            $data = new Balance();
+        }
+        $data->user_id = request('user_id');
+        $data->category_id = request('category_id');
+        $data->amount = request('amount');
+        $data->memo = request('memo');
+        $data->transcation_date = request('transcation_date');
+        $data->save();
     }
 }

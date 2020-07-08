@@ -1,4 +1,4 @@
-<form action="/balances">
+<form action="/balance">
     <table border="1" cellspacing="0" cellpadding="5">
       <tr align="left">
         <th>日</th>
@@ -19,7 +19,7 @@
       <tr align="center">
         <td colspan="2">
           <button type="submit">検索</button>
-          <button type="button" onclick="location.href='/balances'">リセット</button>
+          <button type="button" onclick="location.href='/balance'">リセット</button>
         </td>
       </tr>
     </table>
