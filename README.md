@@ -5,7 +5,6 @@ Laravelで作った家計簿アプリです
 
 # デモ画像
 
-![スクリーンショット 2020-07-01 11 40 23](https://user-images.githubusercontent.com/63381987/86197396-3d848080-bb90-11ea-9e42-9d0bfe668d96.png)
 
 # 特徴
 
