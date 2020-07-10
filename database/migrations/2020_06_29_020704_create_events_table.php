@@ -13,14 +13,14 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->dateTime('date');
-            $table->enum('in_out', ['IN', 'OUT']);
-            $table->string('category');
-            $table->double('money', 10, 3);
-            $table->text('memo')->nullable(true);
-            $table->timestamps();
+        // Schema::create('events', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->dateTime('date');
+        //     $table->enum('in_out', ['IN', 'OUT']);
+        //     $table->string('category');
+        //     $table->double('money', 10, 3);
+        //     $table->text('memo')->nullable(true);
+        //     $table->timestamps();
         });
     }
 
