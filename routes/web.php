@@ -13,14 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WebController@index');
 
 Route::resource('event', 'EventController');
 
 Auth::routes();
 
+Route::resource('recruit', 'RecruitController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('balances', 'BalanceController');
+
+Route::resource('pokemons', 'PokemonController');
+
+Route::resource('allpokemons', 'AllPokemonController');
