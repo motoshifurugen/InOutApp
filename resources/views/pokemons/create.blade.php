@@ -31,13 +31,13 @@
         </td>
       </tr>
       <tr>
-        <th>高さ</th>
+        <th>高さ (cm)</th>
         <td>
           <input type="number" name="size" value="100" require>
         </td>
       </tr>
       <tr>
-        <th>重さ</th>
+        <th>重さ(kg)</th>
         <td>
           <input type="number" name="weight" value="10" require>
         </td>
