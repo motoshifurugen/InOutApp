@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\User;
+// use App\User;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(\App::environment('production')) {
-            \URL::forceScheme('https');
-        }
+        // if(\App::environment('production')) {
+        //     \URL::forceScheme('https');
+        // }
     }
 }
