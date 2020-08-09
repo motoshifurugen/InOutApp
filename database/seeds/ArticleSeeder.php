@@ -16,22 +16,22 @@ class ArticleSeeder extends Seeder
         DB::table('articles')->insert([
             [
                 'user_id' => 1,
-                'title' => 'title1',
-                'body' => 'body1',
+                'title' => 'おはよう',
+                'body' => '今日はいい天気ですね',
                 'created_at' => '2020-08-08 07:44:40',
                 'updated_at' => '2020-08-08 07:44:40'
             ],
             [
                 'user_id' => 2,
-                'title' => 'title2',
-                'body' => 'body2',
+                'title' => 'ピクニック',
+                'body' => 'サンドイッチを作ったのでピクニックにでも行きませんか？',
                 'created_at' => '2020-08-08 07:44:40',
                 'updated_at' => '2020-08-08 07:44:40'
             ],
             [
                 'user_id' => 3,
-                'title' => 'title3',
-                'body' => 'body3',
+                'title' => '台風情報',
+                'body' => '午後から台風で天気が悪くなるらしい',
                 'created_at' => '2020-08-08 07:44:40',
                 'updated_at' => '2020-08-08 07:44:40'
             ]

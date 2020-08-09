@@ -56,13 +56,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('ログインする') }}
                                 </button>
-
-                                {{-- @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('パスワードをお忘れですか？') }}
-                                    </a>
-                                @endif --}}
                             </div>
+                            <p>※ メールアドレス：test@test &nbsp;パスワード：testtest &nbsp;でログインできます</p>
                         </div>
                     </form>
                 </div>
